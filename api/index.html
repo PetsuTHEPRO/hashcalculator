@@ -158,15 +158,15 @@
 
     function criptografar(){
         const password = document.querySelector('#password').value;
-        var hashRipemd128 = 'NAN';
-        var hashSha1 = 'NAN';
-        var hashMd5 = 'NAN';
-        var hashSha3224 = 'NAN';
+        var hashRipemd128;
+        var hashSha1;
+        var hashMd5;
+        var hashSha3224;
 
         hashRipemd128 = CryptoJS.RIPEMD160(password);
         hashSha1 = CryptoJS.SHA1(password);
         hashMd5 = CryptoJS.MD5(password);
-        hashSha3224 = CryptoJS.SHA3(password, { outputLength: 224 });
+        hashSha3224 = CryptoJS.SHA3('oie', { outputLength: 224 });
         
         document.querySelector('#ripemd128').textContent = hashRipemd128.toString();
         document.querySelector('#hashSha1').textContent = hashSha1.toString();
