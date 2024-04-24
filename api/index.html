@@ -110,7 +110,7 @@
                 <span class="description">Hash gerado foi:</span>
             </div>
             <div class="content">
-                <?= $hash_ripemd128 ?? 'NAN' ?>
+                <span id="ripemd128">NAN</span>
             </div>
             <button class="btn-copy" onclick="copyToClipboard('<?= $hash_ripemd128 ?>')">Copiar</button>
         </div>
@@ -122,7 +122,7 @@
                 <span class="description">Hash gerado foi:</span>
             </div>
             <div class="content">
-                <?= $hash_sha1 ?? 'NAN' ?>
+                <span id="hashSha1">NAN</span>
             </div>
             <button class="btn-copy" onclick="copyToClipboard('<?= $hash_sha1 ?>')">Copiar</button>
         </div>
@@ -134,7 +134,7 @@
                 <span class="description">Hash gerado foi:</span>
             </div>
             <div class="content">
-                <?= $hash_md5 ?? 'NAN' ?>
+                <span id="hashMd5">NAN</span>
             </div>
             <button class="btn-copy" onclick="copyToClipboard('<?= $hash_md5 ?>')">Copiar</button>
         </div>
@@ -146,7 +146,7 @@
                 <span class="description">Hash gerado foi:</span>
             </div>
             <div class="content">
-                <span id="ripemd128">NAN</span>
+                <span id="hashSha3224">NAN</span>
             </div>
             <button class="btn-copy" onclick="copyToClipboard('<?= $hash_sha3224 ?>')">Copiar</button>
         </div>
@@ -155,7 +155,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
 <script>
-    import { ripemd128 } from 'ripemd128-js';
 
     function criptografar(){
         const password = document.querySelector('#password').value;
@@ -165,7 +164,7 @@
         const hashSha3224 = 'NAN';
 
         if (password) {
-            hashRipemd128 = ripemd128(password).toString();
+            hashRipemd128 = CryptoJS.RIPEMD160(password).toString();
             hashSha1 = CryptoJS.SHA1(password).toString();
             hashMd5 = CryptoJS.MD5(password).toString();
             hashSha3224 = CryptoJS.SHA3(password, { outputLength: 224 }).toString();
