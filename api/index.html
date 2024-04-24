@@ -105,14 +105,14 @@
 
         <div class="result">
             <div class="header">
-                <span class="title"><strong>RIPEMD-128</strong> hash</span>
+                <span class="title"><strong>RIPEMD-160</strong> hash</span>
                 </br>
                 <span class="description">Hash gerado foi:</span>
             </div>
             <div class="content">
                 <span id="ripemd128"></span>
             </div>
-            <button class="btn-copy" onclick="copyToClipboard('<?= $hash_ripemd128 ?>')">Copiar</button>
+            <button class="btn-copy" onclick="copyToClipboard('ripemd128')">Copiar</button>
         </div>
 
         <div class="result">
@@ -124,7 +124,7 @@
             <div class="content">
                 <span id="hashSha1"></span>
             </div>
-            <button class="btn-copy" onclick="copyToClipboard('<?= $hash_sha1 ?>')">Copiar</button>
+            <button class="btn-copy" onclick="copyToClipboard('hashSha1')">Copiar</button>
         </div>
 
         <div class="result">
@@ -136,7 +136,7 @@
             <div class="content">
                 <span id="hashMd5"></span>
             </div>
-            <button class="btn-copy" onclick="copyToClipboard()">Copiar</button>
+            <button class="btn-copy" onclick="copyToClipboard('hashMd5')">Copiar</button>
         </div>
 
         <div class="result">
@@ -148,14 +148,12 @@
             <div class="content">
                 <span id="hashSha3224"></span>
             </div>
-            <button class="btn-copy" onclick="copyToClipboard('<?= $hash_sha3224 ?>')">Copiar</button>
+            <button class="btn-copy" onclick="copyToClipboard('hashSha3224')">Copiar</button>
         </div>
     </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
-<script src="https://nf404.github.io/crypto-api/crypto-api.min.js"></script>
-
 <script>
 
     function criptografar(){
@@ -165,7 +163,7 @@
         var hashMd5 = 'NAN';
         var hashSha3224 = 'NAN';
 
-        hashRipemd128 = ripemd128(password);
+        hashRipemd128 = CryptoJS.RIPEMD160(password);
         hashSha1 = CryptoJS.SHA1(password);
         hashMd5 = CryptoJS.MD5(password);
         hashSha3224 = CryptoJS.SHA3(password, { outputLength: 224 });
@@ -178,20 +176,14 @@
         
     }
 
-    function copyToClipboard(texto) {
-        const textArea = document.createElement("textarea");
-        textArea.value = texto;
-        document.body.appendChild(textArea);
-        textArea.select();
-        try {
-            const sucesso = document.execCommand('copy');
-            const msg = sucesso ? 'bem-sucedida' : 'mal-sucedida';
-            alert(`Comando de cópia de texto foi ${msg}`);
-        } catch (erro) {
-            alert('Oops, não foi possível copiar');
-        }
-        
-        document.body.removeChild(textArea);
+    function copyToClipboard(span) {
+        const spanElement = document.getElementById(span); // Substitua 'meu-span' pelo ID do seu elemento span
+        const texto = spanElement.textContent;
+        navigator.clipboard.writeText(texto).then(() => {
+            console.log('Texto copiado para a área de transferência:', texto);
+        }).catch((error) => {
+            console.error('Erro ao copiar o texto:', error);
+        });
     }
 
 </script>
