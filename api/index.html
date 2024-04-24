@@ -89,8 +89,7 @@
 <div class="container">
     <div>
 
-        <form action="#" method="POST">
-            
+        <form>
             <div class="input">
                 <div class="header">
                     <span class="title">Calcule seu <strong>HASH</strong></span>
@@ -151,7 +150,7 @@
                 <span class="description">Hash gerado foi:</span>
             </div>
             <div class="content">
-                <?= $hash_sha3224 ?? 'NAN' ?>
+                <span id="ripemd128">NAN</span>
             </div>
             <button class="btn-copy" onclick="copyToClipboard('<?= $hash_sha3224 ?>')">Copiar</button>
         </div>
