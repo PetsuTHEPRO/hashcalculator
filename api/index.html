@@ -110,7 +110,7 @@
                 <span class="description">Hash gerado foi:</span>
             </div>
             <div class="content">
-                <span id="ripemd128">NAN</span>
+                <span id="ripemd128"></span>
             </div>
             <button class="btn-copy" onclick="copyToClipboard('<?= $hash_ripemd128 ?>')">Copiar</button>
         </div>
@@ -122,7 +122,7 @@
                 <span class="description">Hash gerado foi:</span>
             </div>
             <div class="content">
-                <span id="hashSha1">NAN</span>
+                <span id="hashSha1"></span>
             </div>
             <button class="btn-copy" onclick="copyToClipboard('<?= $hash_sha1 ?>')">Copiar</button>
         </div>
@@ -134,7 +134,7 @@
                 <span class="description">Hash gerado foi:</span>
             </div>
             <div class="content">
-                <span id="hashMd5">NAN</span>
+                <span id="hashMd5"></span>
             </div>
             <button class="btn-copy" onclick="copyToClipboard('<?= $hash_md5 ?>')">Copiar</button>
         </div>
@@ -146,7 +146,7 @@
                 <span class="description">Hash gerado foi:</span>
             </div>
             <div class="content">
-                <span id="hashSha3224">NAN</span>
+                <span id="hashSha3224"></span>
             </div>
             <button class="btn-copy" onclick="copyToClipboard('<?= $hash_sha3224 ?>')">Copiar</button>
         </div>
@@ -163,21 +163,16 @@
         var hashMd5 = 'NAN';
         var hashSha3224 = 'NAN';
 
-        if (password) {
-            hashRipemd128 = CryptoJS.RIPEMD160(password);
-            hashSha1 = CryptoJS.SHA1(password);
-            hashMd5 = CryptoJS.MD5(password);
-            hashSha3224 = CryptoJS.SHA3(password, { outputLength: 224 });
-        }
+        hashRipemd128 = CryptoJS.RIPEMD160(password);
+        hashSha1 = CryptoJS.SHA1(password);
+        hashMd5 = CryptoJS.MD5(password);
+        hashSha3224 = CryptoJS.SHA3(password, { outputLength: 224 });
+
         
-        console.log(hashRipemd128.toString());
-        console.log(hashSha1.toString());
-        console.log(hashSha3224.toString());
-        console.log(hashMd5.toString());
-        document.querySelector('#ripemd128').value = hashRipemd128.toString();
-        document.querySelector('#hashSha1').value = hashSha1.toString();
-        document.querySelector('#hashMd5').value = hashMd5.toString();
-        document.querySelector('#hashSha3224').value = hashSha3224.toString();
+        document.querySelector('#ripemd128').textContent = hashRipemd128.toString();
+        document.querySelector('#hashSha1').textContent = hashSha1.toString();
+        document.querySelector('#hashMd5').textContent = hashMd5.toString();
+        document.querySelector('#hashSha3224').textContent = hashSha3224.toString();
         
     }
 
