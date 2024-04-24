@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "ripemd128-js": "^1.0.2"
+  }
+}

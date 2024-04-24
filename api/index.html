@@ -155,6 +155,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
 <script>
+    const ripemd128 = require('ripemd128-js');
 
     function criptografar(){
         const password = document.querySelector('#password').value;
@@ -164,7 +165,7 @@
         const hashSha3224 = 'NAN';
 
         if (password) {
-            hashRipemd128 = CryptoJS.RIPEMD128(password).toString();
+            hashRipemd128 = ripemd128(password).toString();
             hashSha1 = CryptoJS.SHA1(password).toString();
             hashMd5 = CryptoJS.MD5(password).toString();
             hashSha3224 = CryptoJS.SHA3(password, { outputLength: 224 }).toString();
