@@ -1,13 +1,3 @@
-<?php
-$password = $_POST['password'] ?? null;
-if (isset($password)) {
-    $hash_ripemd128 = hash('ripemd128', $password);
-    $hash_sha1 = hash('sha1', $password);
-    $hash_md5 = hash('md5', $password);
-    $hash_sha3224 = hash('sha3-224', $password);
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,7 +100,7 @@ if (isset($password)) {
                 <div class="content">
                     <input id="password" name="password" cols="50" rows="8">
                 </div>
-                <button class="btn-copy">Criptografar</button>
+                <button class="btn-copy" onclick="criptografar()">Criptografar</button>
             </div>
         </form>
 
@@ -169,20 +159,38 @@ if (isset($password)) {
 </div>
 
 <script>
-    function copyToClipboard(texto) {
-    const textArea = document.createElement("textarea");
-    textArea.value = texto;
-    document.body.appendChild(textArea);
-    textArea.select();
-    try {
-        const sucesso = document.execCommand('copy');
-        const msg = sucesso ? 'bem-sucedida' : 'mal-sucedida';
-        alert(`Comando de cópia de texto foi ${msg}`);
-    } catch (erro) {
-        alert('Oops, não foi possível copiar');
+
+    function criptografar(){
+        const password = document.querySelector('#password').value;
+        const hashRipemd128 = 'NAN';
+
+        if (password) {
+            hashRipemd128 = CryptoJS.RIPEMD128(password).toString();
+            const hashSha1 = CryptoJS.SHA1(password).toString();
+            const hashMd5 = CryptoJS.MD5(password).toString();
+            const hashSha3224 = CryptoJS.SHA3(password, { outputLength: 224 }).toString();
+        }
+        
+        document.querySelector('#ripemd128').value = hashRipemd128;
+        
     }
-    document.body.removeChild(textArea);
-}
+
+    function copyToClipboard(texto) {
+        const textArea = document.createElement("textarea");
+        textArea.value = texto;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            const sucesso = document.execCommand('copy');
+            const msg = sucesso ? 'bem-sucedida' : 'mal-sucedida';
+            alert(`Comando de cópia de texto foi ${msg}`);
+        } catch (erro) {
+            alert('Oops, não foi possível copiar');
+        }
+        
+        document.body.removeChild(textArea);
+    }
+
 </script>
 </body>
 </html>
