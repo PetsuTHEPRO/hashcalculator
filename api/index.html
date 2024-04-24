@@ -1,3 +1,13 @@
+<?php
+$password = $_POST['password'] ?? null;
+if (isset($password)) {
+    $hash_ripemd128 = hash('ripemd128', $password);
+    $hash_sha1 = hash('sha1', $password);
+    $hash_md5 = hash('md5', $password);
+    $hash_sha3224 = hash('sha3-224', $password);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
