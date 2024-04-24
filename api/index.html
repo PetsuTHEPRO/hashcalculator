@@ -136,7 +136,7 @@
             <div class="content">
                 <span id="hashMd5"></span>
             </div>
-            <button class="btn-copy" onclick="copyToClipboard('<?= $hash_md5 ?>')">Copiar</button>
+            <button class="btn-copy" onclick="copyToClipboard()">Copiar</button>
         </div>
 
         <div class="result">
@@ -154,6 +154,7 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ripemd128-js@1.0.2/dist/ripemd128.min.js"></script>
 <script>
 
     function criptografar(){
@@ -163,7 +164,7 @@
         var hashMd5 = 'NAN';
         var hashSha3224 = 'NAN';
 
-        hashRipemd128 = CryptoJS.RIPEMD160(password);
+        hashRipemd128 = ripemd128(password);
         hashSha1 = CryptoJS.SHA1(password);
         hashMd5 = CryptoJS.MD5(password);
         hashSha3224 = CryptoJS.SHA3(password, { outputLength: 224 });
