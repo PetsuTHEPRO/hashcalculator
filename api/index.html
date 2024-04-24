@@ -170,10 +170,10 @@
             hashSha3224 = CryptoJS.SHA3(password, { outputLength: 224 });
         }
         
-        console.log(hashRipemd128);
-        console.log(hashSha1);
-        console.log(hashSha3224);
-        console.log(hashMd5);
+        console.log(hashRipemd128.toString());
+        console.log(hashSha1.toString());
+        console.log(hashSha3224.toString());
+        console.log(hashMd5.toString());
         document.querySelector('#ripemd128').value = hashRipemd128;
         document.querySelector('#hashSha1').value = hashSha1;
         document.querySelector('#hashMd5').value = hashMd5;
