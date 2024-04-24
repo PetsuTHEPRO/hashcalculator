@@ -167,12 +167,11 @@
         hashSha1 = CryptoJS.SHA1(password);
         hashMd5 = CryptoJS.MD5(password);
         hashSha3224 = CryptoJS.SHA3(password, { outputLength: 224 });
-
         
         document.querySelector('#ripemd128').textContent = hashRipemd128.toString();
         document.querySelector('#hashSha1').textContent = hashSha1.toString();
         document.querySelector('#hashMd5').textContent = hashMd5.toString();
-        document.querySelector('#hashSha3224').textContent = hashSha3224.toString();
+        document.querySelector('#hashSha3224').textContent = hashSha3224;
         
     }
 
