@@ -180,9 +180,9 @@
         const spanElement = document.getElementById(span); // Substitua 'meu-span' pelo ID do seu elemento span
         const texto = spanElement.textContent;
         navigator.clipboard.writeText(texto).then(() => {
-            console.log('Texto copiado para a área de transferência:', texto);
+            alert('Texto copiado para a área de transferência:', texto);
         }).catch((error) => {
-            console.error('Erro ao copiar o texto:', error);
+            alert('Erro ao copiar o texto:', error);
         });
     }
 
