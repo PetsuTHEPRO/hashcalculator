@@ -163,15 +163,15 @@
         var hashMd5;
         var hashSha3224;
 
-        hashRipemd128 = CryptoJS.RIPEMD160(password);
-        hashSha1 = CryptoJS.SHA1(password);
-        hashMd5 = CryptoJS.MD5(password);
-        hashSha3224 = CryptoJS.SHA3('oie', { outputLength: 224 });
+        hashRipemd128 = CryptoJS.RIPEMD128(password).toString();
+        hashSha1 = CryptoJS.SHA1(password).toString();
+        hashMd5 = CryptoJS.MD5(password).toString();
+        hashSha3224 = CryptoJS.SHA3(password, { outputLength: 224 }).toString();
         
-        document.querySelector('#ripemd128').textContent = hashRipemd128.toString();
-        document.querySelector('#hashSha1').textContent = hashSha1.toString();
-        document.querySelector('#hashMd5').textContent = hashMd5.toString();
-        document.querySelector('#hashSha3224').textContent = hashSha3224;
+        document.querySelector('#ripemd128').value = hashRipemd128;
+        document.querySelector('#hashSha1').value = hashSha1;
+        document.querySelector('#hashMd5').value = hashMd5;
+        document.querySelector('#hashSha3224').value = hashSha3224;
         
     }
 
