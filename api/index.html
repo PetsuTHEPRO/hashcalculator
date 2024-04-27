@@ -163,7 +163,7 @@
         var hashMd5;
         var hashSha3224;
 
-        hashRipemd128 = CryptoJS.RIPEMD128(password).toString();
+        hashRipemd128 = CryptoJS.RIPEMD160(password).toString();
         hashSha1 = CryptoJS.SHA1(password).toString();
         hashMd5 = CryptoJS.MD5(password).toString();
         hashSha3224 = CryptoJS.SHA3(password, { outputLength: 224 }).toString();
